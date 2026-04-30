@@ -72,30 +72,26 @@ O objetivo é criar um cadastro completo de corretor com validações, suporte a
 
 O fluxo está desenvolvido até o `Step4`.
 
-### Passos implementados
-
-- `LandingStep` (passo inicial)
-- `Step1Creci` (dados CRECI)
-- `Step2Endereco` (dados de endereço)
-- `Step3Pix` (PIX / banco)
-- `Step4Foto` (upload / captura de foto)
-
 ### Itens existentes mas ainda não finalizados
 
 - `Step5Loja` (presente no código, mas precisa ser desenvolvido/completado)
 - `Step6Termos` (presente no código, precisa ser desenvolvido/completado)
 - `StepSuccess` (passo final)
 
-## Roadmap pendente
-
-- Conferir estilos do `Step4` e garantir que o upload / salvamento da foto funcione corretamente
-- Desenvolver `Step5` completo
-- Desenvolver `Step6` completo
-- Desenvolver `Step7` (ainda não existe como arquivo de passo definido, deve ser adicionado se for parte do fluxo)
-- Integrar APIs do Genoma
-- Integrar APIs de verificação CRECI reais
-- Substituir serviços mock por chamadas reais de API
-- Ajustar responsividade e usabilidade no Desktop
+## Roadmap 
+[x] `LandingStep` (passo inicial)
+[x] `Step1Creci` (dados CRECI)
+[x] `Step2Endereco` (dados de endereço)
+[x] `Step3Pix` (PIX / banco)
+[x] `Step4Foto` (upload / captura de foto)
+[ ] Conferir estilos do `Step4` e garantir que o upload / salvamento da foto funcione corretamente
+[ ] Desenvolver `Step5` completo
+[ ] Desenvolver `Step6` completo
+[ ] Desenvolver `Step7` (ainda não existe como arquivo de passo definido, deve ser adicionado se for parte do fluxo)
+[ ] Integrar APIs do Genoma
+[ ] Integrar APIs de verificação CRECI reais
+[ ] Substituir serviços mock por chamadas reais de API
+[ ] Ajustar responsividade e usabilidade no Desktop
 
 ## Observações
 
