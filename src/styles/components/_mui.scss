@@ -1,0 +1,864 @@
+@use "../tokens" as *;
+
+.MuiInputBase-root {
+    border-radius: 8px;
+
+    &::after {
+        // border-bottom: 2px solid $primary;
+    }
+}
+
+#autocomplete-filters {
+    display: flex;
+    align-items: center;
+
+
+    .MuiAutocomplete-root {
+        width: 40vw;
+        background-color: white;
+        border-radius: 12px;
+        // border: 1px solid var(--neutral-200, #E0E7EB);
+
+
+        .Mui-focused fieldset,
+        .MuiInputBase-root:hover fieldset {
+            border-color: $primary500;
+        }
+
+        .Mui-disabled:hover fieldset,
+        .MuiInputBase-root fieldset {
+            border-color: $neutral200;
+
+        }
+    }
+
+    .MuiAutocomplete-tag {
+        color: $primary500;
+    }
+
+    fieldset {
+        border-radius: 12px;
+    }
+
+    .icon-search {
+        position: relative;
+        margin-left: 10px;
+        margin-right: -30px;
+        width: 20px;
+        height: 20px;
+    }
+
+    svg {
+        fill: $primary500;
+    }
+
+    .MuiChip-root {
+        background-color: $primary100;
+
+        span {
+            color: $primary500;
+        }
+    }
+
+    input:first-child {
+        padding-left: 30px;
+    }
+
+}
+
+.MuiAutocomplete-popper {
+    padding-top: 10px;
+
+    .filter-clientes {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+
+        .cpf-cnpj {
+            font-family: font-primary;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 20px;
+            color: $neutral400;
+        }
+
+        .item-container {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+    }
+}
+
+.button {
+    font-weight: 700;
+    font-size: 0.85rem;
+    font-family: $font-primary, $font-secondary, sans-serif;
+    box-shadow: inherit;
+    text-transform: none;
+    border-radius: 10px;
+
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .icon-left {
+        margin-right: 0;
+        margin-left: 10px;
+    }
+
+    .icon-right {
+        margin-left: 0;
+        margin-right: 10px;
+    }
+
+    .icon-download {
+        path {
+            color: $primary500;
+        }
+    }
+}
+
+.MuiButton-contained {
+    svg {
+        fill: white;
+    }
+}
+
+button.Mui-disabled {
+    cursor: not-allowed;
+    pointer-events: all;
+
+    span,
+    svg {
+        color: $neutral300;
+        fill: $neutral300;
+    }
+}
+
+.btn-small {
+    padding: 5px 10px;
+}
+
+.btn-medium {
+    padding: 10px 15px;
+    font-size: 1rem;
+}
+
+.btn-large {
+    padding: 15px 25px;
+    font-size: 1rem;
+
+    .icon {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.btn-primary {
+    .btn-disabled {
+        background: $neutral300;
+        border-color: $neutral300;
+
+        span {
+            color: white;
+        }
+
+        .icon-download {
+            path {
+                color: $neutral300;
+            }
+        }
+    }
+
+    .btn-error {
+        background: $red500;
+
+        span {
+            color: white;
+        }
+    }
+
+    .Mui-focused,
+    .Mui-focusVisible {
+        border: 2px solid $primary300;
+        background: $primary600;
+        box-shadow: inherit;
+
+        span {
+            color: white;
+        }
+
+        .icon {
+            fill: white;
+        }
+    }
+
+    .Mui-selected {
+        border: 2px solid $primary600;
+        background: $primary500;
+
+        span {
+            color: white;
+        }
+
+        .icon {
+            fill: white;
+        }
+    }
+}
+
+.btn-secondary {
+    .btn-disabled {
+        border: 2px solid $neutral200;
+
+        span {
+            color: $neutral300;
+        }
+
+        .icon {
+            fill: $neutral300;
+        }
+    }
+
+    .btn-error {
+        border-color: $red200;
+
+        span {
+            color: $red500;
+        }
+
+        .icon {
+            fill: $red500;
+        }
+    }
+
+    .Mui-focused,
+    .Mui-focusVisible {
+        border: 2px solid $primary200;
+        background: $primary100;
+
+        span {
+            color: $primary600;
+        }
+
+        .icon {
+            fill: $primary600;
+        }
+    }
+
+    .Mui-selected {
+        border: 2px solid $primary600;
+        background: white;
+
+        span {
+            color: $primary600;
+        }
+
+        .icon {
+            fill: $primary500;
+        }
+    }
+}
+
+.btn-minimal {
+    .btn-disabled {
+        span {
+            color: $neutral300;
+        }
+
+        .icon {
+            fill: $neutral300;
+        }
+    }
+
+    .btn-error {
+        color: $red500;
+
+        .icon {
+            fill: $red500;
+        }
+    }
+
+    .Mui-focused,
+    .Mui-focusVisible {
+        border: 2px solid $primary200;
+        background: $primary100;
+
+        span {
+            color: $primary500;
+        }
+
+        .icon {
+            fill: $primary500;
+        }
+    }
+
+    .Mui-selected {
+        background: $primary100;
+
+        span {
+            color: $primary500;
+        }
+
+        .icon {
+            fill: $primary500;
+        }
+    }
+}
+
+.btn-style-primary {
+    background: $primary500;
+    border: 1px solid $primary500;
+
+    span {
+        color: white;
+    }
+
+    .icon {
+        fill: white;
+    }
+
+    .icon-download {
+        path {
+            color: $primary500;
+        }
+    }
+}
+
+.btn-style-primary:hover {
+    box-shadow: inherit;
+    background: $primary600;
+    border: 1px solid $primary600;
+
+    .icon-download {
+        path {
+            color: $primary600;
+        }
+    }
+}
+
+.btn-style-secondary {
+    border: 1px solid $primary500;
+
+    span {
+        color: $primary500;
+    }
+
+    .icon {
+        fill: $primary500;
+    }
+
+    path {
+        color: $primary500;
+    }
+}
+
+.btn-style-secondary:hover {
+    color: $primary600;
+    border: 1px solid $primary600;
+    background: inherit;
+
+    .icon {
+        fill: $primary600;
+    }
+}
+
+.btn-icon {
+    .button {
+
+        .icon-right,
+        .icon-left,
+        .MuiButton-startIcon,
+        .MuiButton-startIcon,
+        .MuiButton-endIcon {
+            margin: 0;
+        }
+    }
+}
+
+.btn-salvar-sair {
+    .btn-secondary {
+        .btn-style-secondary {
+            color: $primary500;
+            border: 1px solid $primary500;
+            border-radius: 10px;
+
+            span {
+                color: $primary500;
+
+                svg {
+                    path {
+                        color: $primary500;
+                    }
+                }
+            }
+
+            .icon {
+                fill: transparent;
+            }
+        }
+
+        .btn-style-secondary:hover {
+            color: $primary600;
+            border: 1px solid $primary600;
+            background: inherit;
+
+            span {
+                color: $primary600;
+
+                svg {
+                    path {
+                        color: $primary600;
+                    }
+                }
+            }
+
+            .icon {
+                fill: transparent;
+            }
+        }
+    }
+}
+
+.btn-danger {
+    .btn-style-danger {
+        color: white;
+        border: 1px solid $red500;
+        border-radius: 10px;
+        background: $red500;
+
+        span {
+            color: white;
+
+            svg {
+                path {
+                    color: white;
+                }
+            }
+        }
+
+        .icon {
+            fill: transparent;
+        }
+    }
+
+    .btn-style-danger:hover {
+        color: white;
+        border: 1px solid $primary500;
+        background: $primary500;
+
+        span {
+            color: white;
+
+            svg {
+                path {
+                    color: white;
+                }
+            }
+        }
+
+        .icon {
+            fill: transparent;
+        }
+    }
+}
+
+.list-items {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    height: calc(100vh - 130px);
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .Mui-selected {
+        background: $primary100;
+        color: $primary500;
+    }
+
+    .btn-gerar-venda {
+        span {
+            color: white;
+        }
+
+        svg {
+            fill: white !important;
+        }
+
+        margin-bottom: 16px;
+    }
+
+
+    .MuiCollapse-root {
+        min-height: auto !important;
+    }
+
+    .menu-items {
+        svg {
+            fill: $primary500;
+        }
+
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+        white-space: nowrap;
+        // overflow: hidden;
+
+        .item {
+            span {
+                font-size: 1rem;
+            }
+
+            display: inline-flex;
+            height: 56px;
+            gap: 16px;
+            padding: 4px 22px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+    }
+
+    .menu-items.sub {
+        padding-left: 37px;
+    }
+}
+
+.card {
+    border-radius: 10px;
+    border: 1px solid $neutral200;
+    background: #FFF;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.table-container {
+    border-radius: 10px;
+    border: 1px solid var(--neutral-200, #E0E7EB);
+    background: #FFF;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    padding: 16px 24px;
+
+    .pagination-container {
+
+        .MuiPagination-ul {
+            flex-wrap: nowrap;
+        }
+    }
+
+
+    .MuiTable-root {
+
+        .head-table {
+            th {
+                border-bottom: 2px solid $secondary200;
+                padding: 18px 1vw;
+                background-color: transparent;
+            }
+
+
+        }
+
+        span.MuiCheckbox-colorPrimary {
+            padding: 0;
+
+            svg {
+                fill: $primary500;
+            }
+        }
+
+        .MuiTableRow-hover:hover {
+            .btn-action {
+                visibility: visible;
+            }
+        }
+
+        .row-table {
+            // height: 90px;
+
+            .btn-action {
+                height: 100%;
+                align-items: center;
+                display: flex;
+                visibility: hidden;
+            }
+
+            .first {
+                padding: 16px 1vw 16px 1vw;
+            }
+
+            .col-table {
+                padding: 16px 1vw;
+                height: max-content;
+            }
+
+            @media (max-width: 1340px) {
+                .first {
+                    padding: 16px 8px;
+                    border-left: 3px solid #fff;
+                }
+
+                .col-table {
+                    width: min-content;
+                    padding: 16px 8px;
+                    height: 100%;
+                }
+
+            }
+
+            .col-table.no-pading {
+                padding: 16px 0px;
+            }
+
+            .col-table.green {
+                background-color: $green200;
+
+                p {
+                    color: $green500;
+                }
+            }
+
+            .col-table.red {
+                background-color: $red50;
+
+                p {
+                    color: $red500;
+                }
+            }
+
+            .col {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                p {
+                    color: var(--neutral-500, #5D696F);
+                    font-size: 1em;
+                }
+
+                span {
+                    color: var(--neutral-400, #74848B);
+                    font-size: 0.85em;
+                }
+
+                .chip span {
+                    font-size: 0.75em;
+                }
+            }
+
+            .col.avatar {
+                gap: 5px;
+            }
+
+            .col.data {
+                gap: 8px;
+                align-items: start;
+
+            }
+
+            .col.text {
+                align-items: start;
+            }
+
+            .col.chips {
+                gap: 8px;
+                align-items: start;
+            }
+
+            .col.actions {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 100%;
+            }
+        }
+
+        .row-table.novo p {
+            font-weight: 700;
+        }
+
+        td {
+            width: min-content;
+            vertical-align: top;
+            padding-bottom: 0;
+            min-height: 90px;
+        }
+    }
+}
+
+.check {
+    display: flex;
+
+    div {
+        border-radius: 10px;
+        width: max-content !important;
+    }
+
+    label {
+        margin-left: 0;
+
+        span {
+            font-size: 1rem;
+        }
+    }
+}
+
+.checked div {
+    background-color: $primary100;
+
+    span {
+        color: $primary500;
+    }
+
+    svg {
+        fill: $primary500;
+    }
+}
+
+.chip {
+    border-radius: 4px;
+    padding: 0px 6px;
+    height: 18px;
+    width: max-content;
+
+    span {
+        text-align: center;
+        font-family: font-primary;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 18px;
+        text-transform: uppercase;
+        padding: 0;
+    }
+}
+
+.chip.pill {
+    border-radius: 200px;
+}
+
+.chip-full {
+    display: flex;
+    flex-wrap: wrap;
+    height: auto;
+
+    span {
+        overflow: inherit;
+        display: flex;
+        flex-wrap: wrap;
+        max-width: 245px;
+        width: 100%;
+        text-wrap: wrap;
+        text-align: left;
+    }
+}
+
+.chip.primary {
+    background: $primary100;
+
+    span {
+        color: $primary500 !important;
+    }
+}
+
+.chip.red {
+    background: $red100;
+
+    span {
+        color: $red500 !important;
+    }
+}
+
+.chip.green {
+    background: $green200;
+
+    span {
+        color: $green500 !important;
+    }
+}
+
+.chip.yellow {
+    background: $yellow50;
+
+    span {
+        color: $yellow600 !important;
+    }
+}
+
+.chip.neutral {
+    background: $neutral100;
+
+    span {
+        color: $neutral500 !important;
+    }
+}
+
+.chip.orange {
+    background: $secondary100;
+
+    span {
+        color: $secondary400 !important;
+    }
+}
+
+.chip.purple {
+    background: #E6E5FF;
+
+    span {
+        color: #7A75FF !important;
+    }
+}
+
+.progress-motion {
+    position: relative;
+
+    .div-container {
+        border-radius: 5px;
+        width: 100%;
+        position: absolute;
+        z-index: 10;
+        inset: 0;
+        top: 0;
+        height: 5px;
+        background: $primary200;
+
+        .motion {
+            border-radius: 5px;
+            height: 5px;
+            z-index: 10;
+            background: $primary500;
+        }
+    }
+}
+
+.switch {
+    display: flex;
+    height: 36px;
+    padding: 4px 13px;
+    align-items: center;
+    gap: 16px;
+    border-radius: 10px;
+
+
+    .p2 {
+        font-weight: 700;
+        padding-right: 13px;
+    }
+}
+
+.switch.checked {
+    background: var(--primary-100, #EDF8F7);
+
+    .MuiSwitch-thumb {
+        background-color: $primary500;
+    }
+
+    .p2 {
+        color: $primary500;
+    }
+}

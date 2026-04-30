@@ -1,0 +1,383 @@
+@use "../tokens" as *;
+
+.radio-group {
+    .label-group {
+        color: $neutral600 !important;
+        padding-bottom: 8px;
+    }
+
+    .radio-item {
+        padding: 8px 14px 8px 22px;
+        border-radius: 10px;
+
+        label {
+            margin-left: 0px;
+        }
+
+        span {
+            font-weight: 700;
+        }
+
+        &.check {
+            span {
+                color: $primary500;
+
+                svg {
+                    fill: $primary500;
+                }
+            }
+
+            background-color: $primary100;
+        }
+    }
+}
+
+.input-autocomplete {
+    .input-autocomplete-input {
+        display: flex;
+        align-items: center;
+
+        .MuiSvgIcon-root {
+            height: 24px;
+            width: 24px;
+        }
+    }
+
+    .group {
+        color: white;
+    }
+}
+
+.input-autocomplete,
+.autocomplete-bairros {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    position: relative;
+    padding: 16px 16px 20px 16px;
+
+    border-radius: 10px;
+    border: 2px solid $neutral200;
+
+    .autocomplete-bairros-input {
+        display: flex;
+        align-items: center;
+
+        .MuiSvgIcon-root {
+            height: 24px;
+            width: 24px;
+        }
+    }
+
+    .MuiInputBase-root {
+        padding: 0;
+    }
+
+    label {
+        color: $neutral500;
+        font-family: Roboto;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        /* 120% */
+    }
+
+    svg {
+        fill: $primary500;
+    }
+
+    .MuiPopper-root {
+        width: 100% !important;
+    }
+
+
+    .MuiOutlinedInput-notchedOutline {
+        border: none;
+    }
+}
+
+.input-autocomplete.success,
+.autocomplete-bairros.success {
+    border-color: transparent;
+    background-color: $primary100;
+
+    label {
+        color: $primary500;
+    }
+
+    ::placeholder {
+        color: $primary500;
+    }
+
+}
+
+body {
+
+    .inputContainer {
+        position: relative;
+    }
+
+    .inputContainer.success .react-tel-input {
+        .form-control {
+            border-bottom: 1px solid $primary500 !important;
+        }
+
+        .special-label {
+            color: $primary500;
+        }
+    }
+
+    .inputContainer.active .react-tel-input {
+        .form-control {
+            border-bottom: 1px solid $primary400 !important;
+        }
+
+        .special-label {
+            color: $primary400;
+        }
+    }
+
+    .input-default {
+        width: 100%;
+        background: transparent;
+        padding: 15px 15px 15px 15px;
+        border: 2px solid $neutral200;
+        border-radius: 10px;
+        font-family: $font-primary, $font-secondary, sans-serif;
+        font-size: 1.25rem;
+
+        label {
+            margin-top: 10px;
+            margin-left: 16px;
+            color: $neutral500;
+            max-width: max-content;
+            transform: translate(0, -1.5px) scale(0.75);
+        }
+
+        .MuiInputBase-root::after {
+            border-bottom: 1px;
+            border-color: $neutral500;
+        }
+
+
+        .MuiInputBase-root:hover::after {
+            border-color: $primary400;
+        }
+
+        .MuiInputBase-root:before {
+            border-color: $neutral500;
+        }
+
+        legend {
+            display: none;
+        }
+
+        .icons-container {
+            gap: 8px;
+        }
+    }
+
+    .active .input-default {
+        border-color: $primary400;
+
+        .css-1ew92b2-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+            color: $primary500;
+        }
+
+        .MuiInputBase-root:after {
+            border-bottom: 2px solid $primary400;
+        }
+
+        .MuiSvgIcon-root {
+            fill: $primary500;
+        }
+    }
+
+    .success .input-default {
+        border-color: transparent;
+        background-color: $primary100;
+
+        .MuiSvgIcon-root {
+            fill: $primary500;
+        }
+
+        label {
+            color: $primary500;
+        }
+
+        input {
+            font-size: 1rem;
+            font-weight: 700;
+            color: $primary500;
+        }
+
+        .MuiInputBase-root:before {
+            border-bottom: 1px solid $primary500
+        }
+    }
+
+    .success.disable .input-default {
+        background-color: $neutral100;
+
+        label {
+            color: $neutral400;
+        }
+
+        .MuiInputBase-root.Mui-disabled {
+            -webkit-text-fill-color: $neutral400
+        }
+    }
+
+    .disable .input-default {
+        cursor: not-allowed;
+        border-color: $neutral100;
+
+        .Mui-disabled {
+            cursor: not-allowed;
+        }
+
+        label {
+            color: $neutral300;
+        }
+
+        .Mui-disabled:before {
+            // ALTERAÇÃO NO SUBILINHADO DO CAMPO - BATIDO COM VINI SLACK DIA 06-06
+            // border-bottom: 1px solid $neutral300 !important;
+            border-color: $neutral300;
+        }
+    }
+
+    .error .input-default {
+        border-color: $red200 !important;
+        background-color: transparent !important;
+
+        .MuiFormHelperText-root.Mui-error {
+            font-weight: 700;
+        }
+
+        input,
+        label {
+            color: $red500 !important;
+        }
+
+        .MuiInputBase-root:before {
+            border-color: $red500 !important;
+        }
+
+        ::placeholder {
+            color: $red200 !important;
+        }
+
+        svg {
+            fill: $red500;
+        }
+    }
+
+
+    .input-phone {
+        .form-control {
+            width: 100% !important;
+        }
+    }
+
+    .select-label {
+        position: absolute;
+        font-size: 0.8rem;
+        left: 18px;
+        top: 15px;
+        z-index: 9;
+    }
+
+    .success .select-label {
+        font-weight: 400;
+        color: $primary500;
+    }
+
+    .error .select-label {
+        font-weight: 400;
+        color: $red500;
+    }
+
+
+    *:focus-visible {
+        outline: none;
+    }
+
+    .success .select-default {
+        font-weight: 700;
+        color: $primary500;
+    }
+
+    .success .select-documentos {
+        font-weight: 700;
+        color: $primary500;
+        border-radius: 10px;
+        border: 1px solid var(--primary-500, #01988C);
+    }
+
+    .error .select-default,
+    .error .select-documentos {
+        font-weight: 400;
+        color: $neutral300;
+    }
+
+    .select-default {
+        padding: 0;
+        font-size: 1rem;
+        font-family: $font-primary, $font-secondary, sans-serif;
+        color: $neutral300;
+
+        input {
+            font-size: 1rem;
+        }
+
+        :before {
+            border-bottom: none;
+        }
+
+        .MuiOutlinedInput-notchedOutline {
+            top: 0;
+            border-color: $neutral200;
+            border-style: hidden;
+        }
+
+        .MuiSelect-select {
+            white-space: inherit;
+            font-size: 16px;
+            font-family: $font-primary, $font-secondary, sans-serif;
+            border-bottom: none;
+            padding: 36px 0 23px 17px;
+        }
+    }
+
+    .select-menu {
+        margin-top: 4px;
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            padding: 13px 18px;
+            border-bottom: 1px solid $neutral200;
+            font-family: font-primary;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 20px;
+            min-height: 12px;
+        }
+
+        li.placeholder {
+            display: none;
+            color: $neutral500;
+            background-color: $neutral100;
+            font-weight: 400;
+            padding: 6px 18px;
+            opacity: 1;
+            border-bottom: 2px solid $neutral200;
+        }
+    }
+}
