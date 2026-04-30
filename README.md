@@ -90,6 +90,7 @@ O fluxo está desenvolvido até o `Step4`.
 - [ ] Integrar APIs do Genoma
 - [ ] Integrar APIs de verificação CRECI reais
 - [ ] Substituir serviços mock por chamadas reais de API
+- [ ] Substituir favicons
 - [ ] Ajustar responsividade e usabilidade no Desktop
 
 ## Observações
