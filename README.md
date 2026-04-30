@@ -79,19 +79,19 @@ O fluxo está desenvolvido até o `Step4`.
 - `StepSuccess` (passo final)
 
 ## Roadmap 
-[x] `LandingStep` (passo inicial)
-[x] `Step1Creci` (dados CRECI)
-[x] `Step2Endereco` (dados de endereço)
-[x] `Step3Pix` (PIX / banco)
-[x] `Step4Foto` (upload / captura de foto)
-[ ] Conferir estilos do `Step4` e garantir que o upload / salvamento da foto funcione corretamente
-[ ] Desenvolver `Step5` completo
-[ ] Desenvolver `Step6` completo
-[ ] Desenvolver `Step7` (ainda não existe como arquivo de passo definido, deve ser adicionado se for parte do fluxo)
-[ ] Integrar APIs do Genoma
-[ ] Integrar APIs de verificação CRECI reais
-[ ] Substituir serviços mock por chamadas reais de API
-[ ] Ajustar responsividade e usabilidade no Desktop
+- [x] `LandingStep` (passo inicial)
+- [x] `Step1Creci` (dados CRECI)
+- [x] `Step2Endereco` (dados de endereço)
+- [x] `Step3Pix` (PIX / banco)
+- [x] `Step4Foto` (upload / captura de foto)
+- [ ] Conferir estilos do `Step4` e garantir que o upload / salvamento da foto funcione corretamente
+- [ ] Desenvolver `Step5` completo
+- [ ] Desenvolver `Step6` completo
+- [ ] Desenvolver `Step7` (ainda não existe como arquivo de passo definido, deve ser adicionado se for parte do fluxo)
+- [ ] Integrar APIs do Genoma
+- [ ] Integrar APIs de verificação CRECI reais
+- [ ] Substituir serviços mock por chamadas reais de API
+- [ ] Ajustar responsividade e usabilidade no Desktop
 
 ## Observações
 
