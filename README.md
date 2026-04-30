@@ -87,7 +87,6 @@ O fluxo está desenvolvido até o `Step4`.
 - [ ] Conferir estilos do `Step4` e garantir que o upload / salvamento da foto funcione corretamente
 - [ ] Desenvolver `Step5` completo
 - [ ] Desenvolver `Step6` completo
-- [ ] Desenvolver `Step7` (ainda não existe como arquivo de passo definido, deve ser adicionado se for parte do fluxo)
 - [ ] Integrar APIs do Genoma
 - [ ] Integrar APIs de verificação CRECI reais
 - [ ] Substituir serviços mock por chamadas reais de API
