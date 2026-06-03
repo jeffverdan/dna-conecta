@@ -71,13 +71,13 @@ export function Step1Creci() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="cc-step1-form">
-      <div className="cc-step1-layout">
-        <div className="cc-step1-content-card">
-          <section className="cc-step1-section">
-            <div className="cc-step1-section-title-row">
+    <form onSubmit={handleSubmit(onSubmit)} className="cc-step-form">
+      <div className="cc-step-layout">
+        <div className="cc-step-content-card">
+          <section className="cc-step-section">
+            <div className="cc-step-section-title-row">
               <User size={20} color="#01988C" />
-              <h2 className="cc-step1-section-title">Dados pessoais</h2>
+              <h2 className="cc-step-section-title">Dados pessoais</h2>
             </div>
 
             <InputText
@@ -132,7 +132,7 @@ export function Step1Creci() {
             />
           </section>
 
-          <section className="cc-step1-section">
+          <section className="cc-step-section">
             <div className="cc-step1-section-label">Contato</div>
             <InputText
               label="Telefone*"
@@ -153,7 +153,7 @@ export function Step1Creci() {
             />
           </section>
 
-          <section className="cc-step1-section">
+          <section className="cc-step-section">
             <div className="cc-step1-section-label">Identificação</div>
             <InputText
               label="CPF*"
@@ -181,7 +181,7 @@ export function Step1Creci() {
             />
           </section>
 
-          <section className="cc-step1-section">
+          <section className="cc-step-section">
             <div className="cc-step1-section-label">Sobre a DNA Imoveis</div>
             <InputText
               label="Inicio das atividades*"

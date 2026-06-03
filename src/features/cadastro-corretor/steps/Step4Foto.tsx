@@ -1,43 +1,162 @@
-import Webcam from "react-webcam";
-import { useRef, useState } from "react";
+import { useEffect } from "react";
 import imageCompression from "browser-image-compression";
 import { useCadastroStore } from "@/features/cadastro-corretor/store/useCadastroStore";
+import { useForm } from "react-hook-form";
+import { docsSchema } from "../schemas/cadastroSchema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { ArrowRight } from "lucide-react";
+import { HiDocumentDuplicate } from "react-icons/hi";
+import FileUploadButton from "@/components/form/FileUploadButton";
+import FileUploadOrPhoto from "@/components/form/FileUploadOrPhoto";
+import { patchDocumentCNH, patchDocumentResidencia, patchDocumentDiploma, patchDocumentFoto, dataDocuments } from "../store/useDocumentsStore";
+
+type FormData = z.infer<typeof docsSchema>;
 
 export function Step4Foto() {
-  const webcamRef = useRef<Webcam>(null);
-  const [preview, setPreview] = useState<string>("");
   const patchData = useCadastroStore((s) => s.patchData);
   const setStep = useCadastroStore((s) => s.setStep);
+  const data = useCadastroStore((s) => s.data);
 
-  const capture = async () => {
-    const img = webcamRef.current?.getScreenshot();
-    if (!img) return;
-    setPreview(img);
-    patchData({ fotoBase64: img });
-  };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { isValid, errors },
+    reset
+  } = useForm<FormData>({
+    resolver: zodResolver(docsSchema),
+    mode: "onChange",
+    defaultValues: {...data, ...dataDocuments} as FormData
+  });
+
+  console.log("Watch: ", watch());
 
   const upload: React.ChangeEventHandler<HTMLInputElement> = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    const compressed = await imageCompression(file, { maxSizeMB: 0.6, maxWidthOrHeight: 1200 });
-    const base64 = await imageCompression.getDataUrlFromFile(compressed);
-    setPreview(base64);
-    patchData({ fotoBase64: base64 });
+    console.log("File: ", file);
+    console.log("Event Name: ", e.target.name);
+    const name = e.target.name as keyof FormData;
+    const fileName = file.name;
+
+    if (file.type === "application/pdf") {
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const base64 = event.target?.result as string;
+        setValue(name, base64, { shouldValidate: true });
+        setValue(`${name.replace("_base64", "_name")}` as keyof FormData, fileName);
+      };
+      reader.readAsDataURL(file);
+    } else if (file.type.startsWith("image/")) {
+      const compressed = await imageCompression(file, { maxSizeMB: 0.6, maxWidthOrHeight: 1200 });
+      const base64 = await imageCompression.getDataUrlFromFile(compressed);
+      setValue(name, base64, { shouldValidate: true });
+      setValue(`${name.replace("_base64", "_name")}` as keyof FormData, fileName);
+    } else {
+      alert("Tipo de arquivo não suportado. Por favor, envie uma imagem ou PDF.");
+    }
+  };
+
+  const removeFile = (name: string) => {    
+    setValue(name as keyof FormData, "", { shouldValidate: true });
+    setValue(`${name.replace("_base64", "_name")}` as keyof FormData, "");
+  };
+
+  const onSubmit = (v: FormData) => {
+    // patchData({ ...v });
+    patchDocumentCNH({ base64: v.doc_rg_cnh_base64, name: v.doc_rg_cnh_name });
+    patchDocumentResidencia({ base64: v.doc_residencia_base64, name: v.doc_residencia_name });
+    patchDocumentDiploma({ base64: v.doc_diploma_base64, name: v.doc_diploma_name });
+    patchDocumentFoto({ base64: v.fotoBase64, name: v.fotoBase64 });
+    setStep(5);
+  };
+
+  const onClickNotValid = () => {
+    if (isValid) return;
+
+    const firstError = Object.keys(errors)[0] as keyof FormData | undefined;
+    console.log("Erro: ", errors);
+
+    if (!firstError) return;
+
+    const addressAutoFields = ["rg_cnh", "residencia", "fotoBase64"];
+    const targetField = addressAutoFields.includes(firstError) ? "rg_cnh" : firstError;
+    const element = document.querySelector(`[name="${targetField}"]`);
+
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "center" });
+      (element as HTMLElement).focus();
+    }
+  };
+
+  const handleFileOrPhotoChange = (base64: string) => {
+    setValue("fotoBase64", base64, { shouldValidate: true });
   };
 
   return (
-    <section className="cc-step-card">
-      <h1 className="cc-step-title">Etapa 4: Foto</h1>
-      <Webcam ref={webcamRef} screenshotFormat="image/jpeg" className="cc-photo-camera" videoConstraints={{ facingMode: "user" }} />
-      <div className="cc-photo-actions">
-        <button type="button" className="cc-photo-button" onClick={capture}>Tirar foto</button>
-        <label className="cc-photo-upload">
-          Upload
-          <input type="file" accept="image/*" className="cc-photo-file" onChange={upload} />
-        </label>
+    <form onSubmit={handleSubmit(onSubmit)} className="cc-step-form">
+      <div className="cc-step-layout">
+        <div className="cc-step-content-card">
+          <section className="cc-step-section step4">
+            <div className="cc-step-section-title-row">
+              <HiDocumentDuplicate size={20} color="#01988C" />
+              <h2 className="cc-step-section-title">Envio de documentos</h2>
+            </div>
+            <p className="cc-step4-subtitle">Envie documentos legíveis:</p>
+
+            {/* COMPONENTE PARA UPLOAD DE RG OU CNH */}
+            <FileUploadButton
+              title="1. Documento com foto (RG ou CNH)*"
+              label="Escolha o arquivo"
+              name="doc_rg_cnh_base64"
+              removeFile={removeFile}
+              fileName={watch("doc_rg_cnh_name")}
+              onChange={upload}
+            />
+
+            {/* COMPONENTE PARA UPLOAD DE COMPROVANTE DE RESIDÊNCIA */}
+            <FileUploadButton
+              title="2. Comprovante de residência*"
+              label="Escolha o arquivo"
+              name="doc_residencia_base64"
+              removeFile={removeFile}
+              fileName={watch("doc_residencia_name")}
+              onChange={upload}
+            />
+
+
+            {/* COMPONENTE PARA UPLOAD DE DIPLOMA */}
+            <FileUploadButton
+              title="3. Certificado de 2º grau (opcional)"
+              label="Escolha o arquivo"
+              name="doc_diploma_base64"
+              removeFile={removeFile}
+              fileName={watch("doc_diploma_name")}
+              onChange={upload}
+            />
+
+
+            <FileUploadOrPhoto
+              title="4. Upload de foto*"
+              subtitle="Envie uma foto do seu rosto ou tire uma agora. Isso nos ajuda a validar seus documentos."
+              accept="image/*"
+              name="fotoBase64"
+              fileLabel="Escolha o arquivo"
+              photoLabel="Tire foto"
+              onChange={handleFileOrPhotoChange}
+            />
+          </section>
+        </div>
       </div>
-      {preview && <img src={preview} className="cc-photo-preview" />}
-      <button className="cc-primary-button" onClick={() => setStep(5)}>Continuar</button>
-    </section>
+
+      <div className="cc-step1-footer">
+        <button type="submit" onClick={onClickNotValid} className="cc-step1-footer-button">
+          Ir para indicação
+          <ArrowRight size={24} color="#ffffff" />
+        </button>
+      </div>
+    </form>
   );
 }

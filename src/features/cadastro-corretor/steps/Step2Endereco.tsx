@@ -106,13 +106,13 @@ export function Step2Endereco() {
   const enderecoLinha2 = bairro && estado ? `${bairro} - ${estado}` : "";
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="cc-step1-form">
-      <div className="cc-step1-layout">
-        <div className="cc-step1-content-card">
-          <section className="cc-step1-section">
-            <div className="cc-step1-section-title-row">
+    <form onSubmit={handleSubmit(onSubmit)} className="cc-step-form">
+      <div className="cc-step-layout">
+        <div className="cc-step-content-card">
+          <section className="cc-step-section">
+            <div className="cc-step-section-title-row">
               <Building2 size={20} color="#01988C" />
-              <h2 className="cc-step1-section-title">Endereço</h2>
+              <h2 className="cc-step-section-title">Endereço</h2>
             </div>
 
             <InputText

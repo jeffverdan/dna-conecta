@@ -108,6 +108,7 @@ export function Step3Pix() {
       (element as HTMLElement).focus();
     }
   };
+  
   const [RADIO_OPTIONS, SETRADIO_OPTIONS] = useState([
     { label: "PIX", value: "pix", disabled: false, checked: true },
     { label: "Banco", value: "banco", disabled: false, checked: false },
@@ -118,13 +119,14 @@ export function Step3Pix() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="cc-step1-form">
-      <div className="cc-step1-layout">
-        <div className="cc-step1-content-card">
-          <section className="cc-step1-section">
-            <div className="cc-step1-section-title-row">
+    <form onSubmit={handleSubmit(onSubmit)} className="cc-step-form">
+      <div className="cc-step-layout">
+        <div className="cc-step-content-card">
+          <section className="cc-step-section">
+
+            <div className="cc-step-section-title-row">
               <CircleDollarSign size={20} color="#01988C" />
-              <h2 className="cc-step1-section-title">Dados bancários</h2>
+              <h2 className="cc-step-section-title">Dados bancários</h2>
             </div>
 
             <p>Informe seus dados para receber suas comissões.</p>
@@ -197,7 +199,7 @@ export function Step3Pix() {
 
       <div className="cc-step1-footer">
         <button type="submit" onClick={onClickNotValid} className="cc-step1-footer-button">
-          Ir para os dados bancários
+          Ir para upload de documentos
           <ArrowRight size={24} color="#ffffff" />
         </button>
       </div>
