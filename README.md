@@ -84,7 +84,7 @@ O fluxo está desenvolvido até o `Step4`.
 - [x] `Step2Endereco` (dados de endereço)
 - [x] `Step3Pix` (PIX / banco)
 - [x] `Step4Foto` (upload / captura de foto)
-- [ ] Conferir estilos do `Step4` e garantir que o upload / salvamento da foto funcione corretamente
+- [x] `Step4` (upload estilizado de documentos, RG, CNH, Diploma, Residencia e Foto)
 - [ ] Desenvolver `Step5` completo
 - [ ] Desenvolver `Step6` completo
 - [ ] Integrar APIs do Genoma
