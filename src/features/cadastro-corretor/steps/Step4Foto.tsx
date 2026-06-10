@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import imageCompression from "browser-image-compression";
 import { useCadastroStore } from "@/features/cadastro-corretor/store/useCadastroStore";
 import { useForm } from "react-hook-form";
@@ -9,29 +8,27 @@ import { ArrowRight } from "lucide-react";
 import { HiDocumentDuplicate } from "react-icons/hi";
 import FileUploadButton from "@/components/form/FileUploadButton";
 import FileUploadOrPhoto from "@/components/form/FileUploadOrPhoto";
-import { patchDocumentCNH, patchDocumentResidencia, patchDocumentDiploma, patchDocumentFoto, dataDocuments } from "../store/useDocumentsStore";
+import { patchDocumentCNH, patchDocumentResidencia, patchDocumentDiploma, patchDocumentFoto, getDataDocuments } from "../store/useDocumentsStore";
 
 type FormData = z.infer<typeof docsSchema>;
 
-export function Step4Foto() {
-  const patchData = useCadastroStore((s) => s.patchData);
+export function Step4Foto() {  
   const setStep = useCadastroStore((s) => s.setStep);
   const data = useCadastroStore((s) => s.data);
 
-  const {
-    register,
+  const {    
     handleSubmit,
     watch,
     setValue,
-    formState: { isValid, errors },
-    reset
+    formState: { isValid, errors },    
   } = useForm<FormData>({
     resolver: zodResolver(docsSchema),
     mode: "onChange",
-    defaultValues: {...data, ...dataDocuments} as FormData
+    defaultValues: {...data, ...getDataDocuments()} as FormData
   });
 
-  console.log("Watch: ", watch());
+  console.log("DataDocs: ", getDataDocuments());
+  console.log("watch: ", watch());
 
   const upload: React.ChangeEventHandler<HTMLInputElement> = async (e) => {
     const file = e.target.files?.[0];
@@ -66,10 +63,11 @@ export function Step4Foto() {
 
   const onSubmit = (v: FormData) => {
     // patchData({ ...v });
-    patchDocumentCNH({ base64: v.doc_rg_cnh_base64, name: v.doc_rg_cnh_name });
-    patchDocumentResidencia({ base64: v.doc_residencia_base64, name: v.doc_residencia_name });
-    patchDocumentDiploma({ base64: v.doc_diploma_base64, name: v.doc_diploma_name });
-    patchDocumentFoto({ base64: v.fotoBase64, name: v.fotoBase64 });
+    console.log("Submit Data: ", v);
+    patchDocumentCNH({ base64: v.doc_rg_cnh_name, name: v.doc_rg_cnh_name });
+    patchDocumentResidencia({ base64: v.doc_residencia_name, name: v.doc_residencia_name });
+    patchDocumentDiploma({ base64: v.doc_diploma_name, name: v.doc_diploma_name });
+    patchDocumentFoto({ base64: v.fotoBase64, name: v.fotoName });
     setStep(5);
   };
 
@@ -91,8 +89,9 @@ export function Step4Foto() {
     }
   };
 
-  const handleFileOrPhotoChange = (base64: string) => {
+  const handleFileOrPhotoChange = (base64: string, name: string) => {
     setValue("fotoBase64", base64, { shouldValidate: true });
+    setValue("fotoName", name, { shouldValidate: true });
   };
 
   return (
@@ -145,6 +144,7 @@ export function Step4Foto() {
               name="fotoBase64"
               fileLabel="Escolha o arquivo"
               photoLabel="Tire foto"
+              value={watch("fotoBase64")}
               onChange={handleFileOrPhotoChange}
             />
           </section>

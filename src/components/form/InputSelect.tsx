@@ -26,7 +26,7 @@ type MySelectProps = SelectProps & {
 
 const InputSelect = forwardRef<HTMLInputElement, MySelectProps>(
     function InputSelect(data: MySelectProps, ref) {
-        const { label, success, required, fieldError, options, value, subHeader, onBlurFunction, divClass, ...rest } = data;
+        const { label, success, required, fieldError, options, value, subHeader, onBlurFunction, divClass, placeholder, ...rest } = data;
         const [isFocused, setIsFocused] = useState(false);
         const [isValue, setIsValue] = useState(!!value);
         const [list, setList] = useState<{ value: number | string, name: string }[]>([]);
@@ -38,7 +38,7 @@ const InputSelect = forwardRef<HTMLInputElement, MySelectProps>(
         useEffect(() => {
             const firstOption = options?.[0];
             if(!!firstOption && !!firstOption.value) {
-                options.unshift({ value: 0, name: `Selecione o ${label.toLowerCase().replace("*", "")}` })
+                options.unshift({ value: 0, name: placeholder || `Selecione o ${label.toLowerCase().replace("*", "")}` })
                 setList(options)
             }
         }, [options])

@@ -3,6 +3,10 @@ import { useMutation } from "@tanstack/react-query";
 import { apiPost } from "@/services/api";
 import { useCadastroStore } from "@/features/cadastro-corretor/store/useCadastroStore";
 import { toast } from "sonner";
+import docInfo from "@/images/DocInfo.svg";
+import { TERMO_TEXT } from "../utils/constants";
+import { HiExclamationCircle } from "react-icons/hi";
+import { CheckIcon } from "lucide-react";
 
 export function Step6Termos() {
   const [canAccept, setCanAccept] = useState(false);
@@ -27,17 +31,33 @@ export function Step6Termos() {
   };
 
   return (
-    <section className="cc-step-card">
-      <h1 className="cc-step-title">Etapa 6: Termos</h1>
-      <div ref={ref} onScroll={onScroll} className="cc-terms-box">
-        {Array.from({ length: 30 }).map((_, i) => <p key={i}>Termo {i + 1}: texto legal de aceite.</p>)}
+    <section className="cc-step6-card">
+      <div className="cc-step-section-title-row">
+        <img className="step-title-icon" src={docInfo} alt="Icon" />
+        <h2 className="cc-step-section-title">Termos e contrato</h2>
       </div>
-      <label className="cc-terms-label">
-        <input type="checkbox" disabled={!canAccept} checked={accepted} onChange={(e) => setAccepted(e.target.checked)} />
-        Aceito os termos e condicoes
+
+      <p className="cc-step4-subtitle">Leia e aceite os termos para concluir seu cadastro..</p>
+
+      <div ref={ref} onScroll={onScroll} className="cc-terms-box">
+        <pre>{TERMO_TEXT}</pre>
+      </div>
+
+      <div className="cc-step-card-helper">
+        <HiExclamationCircle />
+        <span className="cc-step-card-helper-text">
+          Você pode consultar este documento sempre que precisar.
+        </span>
+      </div>
+
+      <label className="cc-terms-label checkbox-container">
+        <input type="checkbox" className="check" disabled={!canAccept} checked={accepted} onChange={(e) => setAccepted(e.target.checked)} />
+        <p className="label-checkbox">Li e aceito o Contrato de Corretagem*</p>
       </label>
+
       <button disabled={!accepted || mutation.isPending} onClick={() => mutation.mutate()} className="cc-primary-button">
-        Finalizar cadastro
+        Enviar cadastro 
+        <CheckIcon />
       </button>
     </section>
   );

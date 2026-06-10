@@ -18,7 +18,8 @@ export const docsSchema = z.object({
   doc_residencia_name: z.string().min(2),
   doc_diploma_base64: z.string().optional(),
   doc_diploma_name: z.string().optional(),
-  fotoBase64: z.string().min(10)
+  fotoBase64: z.string().min(10),
+  fotoName: z.string().min(2)
 });
 
 // STEP 5 - INDICAÇÃO

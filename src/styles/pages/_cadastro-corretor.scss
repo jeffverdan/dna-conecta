@@ -10,7 +10,8 @@
   margin: 0 auto;
   width: 100%;
   max-width: 360px;
-  height: calc(100vh - 73px);
+  // height: calc(100vh - 73px);
+  height: 100%;
   overflow: auto;
   background: white;
 }
@@ -101,6 +102,7 @@
 
 .cadastro-corretor-progress-fill--6 {
   width: 100%;
+  background: var(--system-green-500, #6B9539);
 }
 
 .cadastro-corretor-main {
@@ -112,8 +114,11 @@
   padding: 16px 16px 32px;
 }
 
-.cc-step-card {
+.cc-step6-card {
   // border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   background: $neutralwhite;
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -177,10 +182,15 @@
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .cc-primary-button:disabled {
   opacity: 0.5;
+  background-color: $neutral300;
   cursor: not-allowed;
 }
 
@@ -378,74 +388,155 @@
 
 .cc-terms-box {
   margin-top: 16px;
-  height: 208px;
-  overflow-y: auto;
+  // height: 208px;
+  // overflow-y: auto;
   border: 1px solid #dfe6ea;
   border-radius: 12px;
   background: #f8fbfb;
   padding: 16px;
   color: #334155;
   font-size: 14px;
+
+  pre {
+    white-space: pre-wrap;
+    color: var(--neutral-600, #464F53);
+
+    /* regular/p2 */
+    font-family: Roboto;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    /* 137.5% */
+  }
 }
 
 .cc-terms-box p {
   margin: 0 0 8px;
 }
 
-.cc-terms-label {
-  margin-top: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #334155;
-  font-size: 14px;
-}
-
 .cc-success-card {
-  border-radius: 16px;
-  background: $neutralwhite;
-  padding: 24px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.cc-success-icon {
-  margin: 0 auto;
   display: flex;
-  width: 64px;
-  height: 64px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  background: #e7f5f4;
-  color: $primary500;
-  font-size: 30px;
-}
-
-.cc-success-title {
-  margin: 16px 0 0;
-  color: #0f172a;
-  font-size: 28px;
-  font-weight: 700;
-}
-
-.cc-success-subtitle {
-  margin: 8px 0 0;
-  color: #475569;
-  font-size: 14px;
-}
-
-.cc-success-button {
-  margin-top: 24px;
   width: 100%;
-  border: 0;
-  border-radius: 12px;
-  background: $primary500;
-  padding: 12px 16px;
-  color: $neutralwhite;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
+  height: 100vh;
+  padding: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  background: var(--system-green-50, #F5FAEF);
+
+  .success-image {
+    margin-top: 56px;
+  }
+
+  .cc-success-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    .cc-sucess-title {
+      color: var(--system-green-500, #6B9539);
+      text-align: center;
+
+      /* bold/h4 */
+      font-family: Lato;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 30px;
+      /* 125% */
+    }
+
+    .cc-sucess-subtitle {
+      color: var(--neutral-600, #464F53);
+      text-align: center;
+
+      /* regular/p2 */
+      font-family: Roboto;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 22px;
+      /* 137.5% */
+    }
+  }
+
+  .cc-nextsteps-container {
+    display: flex;
+    padding: 16px;
+    flex-direction: column;
+    gap: 16px;
+    align-self: stretch;
+    border-radius: 16px;
+    background: var(--neutral-white, #FFF);
+
+    .cc-nextstep-label {
+      color: var(--neutral-600, #464F53);
+      /* bold/p2 */
+      font-family: Roboto;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 22px;
+      /* 137.5% */
+    }
+
+    .cc-nextstep-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      align-self: stretch;
+
+      svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+      }
+
+      .green {
+        fill: var(--system-green-500, #6B9539);
+        color: white;
+      }
+
+      .yellow {
+        fill: var(--system-yellow-500, #E9B949);
+        color: white;
+      }
+
+      span {
+        color: var(--neutral-600, #464F53);
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        /* 142.857% */
+      }
+    }
+
+    .cc-nextstep-step.disabled {
+      svg {
+        fill: var(--neutral-300, #A7B7BE);
+      }
+
+      span {
+        color: var(--neutral-300, #A7B7BE);
+      }
+    }
+  }
+
+  .cc-endlabel {
+    color: var(--neutral-400, #74848B);
+    text-align: center;
+    width: 100%;
+    /* regular/s1 */
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+  }
 }
 
 .landing-step {
@@ -918,7 +1009,7 @@ span.cc-step-upload-subtitle {
   align-items: flex-start;
   gap: 11px;
   align-self: stretch;
-  
+
   .cc-file-name {
     height: 56px;
     padding: 16px 18px 16px 23px;
@@ -936,8 +1027,8 @@ span.cc-step-upload-subtitle {
       text-overflow: ellipsis;
       white-space: nowrap;
       width: 90%;
-      
-  
+
+
       /* bold/p1 */
       font-family: Roboto;
       font-size: 20px;
@@ -964,7 +1055,7 @@ span.cc-step-upload-subtitle {
     border-radius: 10px;
     background: var(--system-red-500, #E33838);
 
-    svg {      
+    svg {
       color: white;
     }
   }
@@ -988,5 +1079,69 @@ span.cc-step-upload-subtitle {
 
   .cc-file-upload {
     margin-bottom: 16px;
+  }
+}
+
+/* Upload loading/progress styles for FileUploadOrPhoto */
+.cc-upload-loading {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  width: 100%;
+}
+
+.cc-upload-progress {
+  height: 10px;
+  background: #eee;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cc-upload-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: $primary500;
+  transition: width 120ms linear;
+}
+
+.cc-upload-loading-text {
+  font-size: 12px;
+  color: $neutral600;
+  text-align: center;
+}
+
+.step5-logo-conecta {
+  padding: 16px 22%;
+}
+
+.cc-step-card-helper {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px;
+  flex: 1 0 0;
+  border-radius: 10px;
+  border: 1px solid var(--neutral-200, #E0E7EB);
+  background: var(--neutral-50, #F6F8F9);
+
+  svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    fill: var(--primary-500, #01988C);
+  }
+
+  .cc-step-card-helper-text {
+    color: var(--neutral-500, #5D696F);
+
+    /* regular/s1 */
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    /* 142.857% */
   }
 }

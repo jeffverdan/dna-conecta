@@ -1,4 +1,4 @@
-﻿import { ArrowLeft, ArrowRight, User } from "lucide-react";
+﻿import { ArrowRight, User } from "lucide-react";
 import { useCadastroStore } from "@/features/cadastro-corretor/store/useCadastroStore";
 import { useForm } from "react-hook-form";
 import { z } from "zod";

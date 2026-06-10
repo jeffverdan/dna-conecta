@@ -381,3 +381,52 @@ body {
         }
     }
 }
+
+.checkbox-container {
+    display: flex;
+    height: 56px;
+    margin: 24px 0px 24px 24px;
+    padding: 4px 22px 4px 0;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    // align-self: stretch;
+
+    .check {
+        appearance: none;
+        -webkit-appearance: none;
+
+        width: 18px;
+        height: 18px;
+
+        border: 2px solid var(--primary-500, #01988C);        
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .check:checked {
+        background-color: var(--primary-500, #01988C);
+        border-color: var(--primary-500, #01988C);
+    }
+
+    .check:checked::before {
+        content: "✓";
+        color: white;
+        // display: block;
+        text-align: center;
+        margin-top: -4px;
+        // width: 14px;
+        // height: 14px;
+    }
+
+    .label-checkbox {
+        color: var(--neutral-600, #464F53);
+
+        /* bold/s1 */
+        font-family: Roboto;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 20px; /* 142.857% */
+    }
+}

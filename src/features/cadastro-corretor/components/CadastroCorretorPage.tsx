@@ -28,7 +28,7 @@ export function CadastroCorretorPage() {
   return (
     <div className="cadastro-corretor-page">
       <div className="cadastro-corretor-shell">
-        {currentStep > 0 && (
+        {currentStep > 0 && currentStep !== 7 && (
           <header className="cadastro-corretor-header">
             <div className="cc-step1-header-top">
               <button type="button" onClick={() => setStep(visualStep - 1)} className="cc-step1-back">
