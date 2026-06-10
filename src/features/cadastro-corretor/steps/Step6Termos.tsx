@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { apiPost } from "@/services/api";
 import { useCadastroStore } from "@/features/cadastro-corretor/store/useCadastroStore";
@@ -9,8 +9,7 @@ import { HiExclamationCircle } from "react-icons/hi";
 import { CheckIcon } from "lucide-react";
 
 export function Step6Termos() {  
-  const [accepted, setAccepted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const [accepted, setAccepted] = useState(false);  
   const data = useCadastroStore((s) => s.data);
   const setStep = useCadastroStore((s) => s.setStep);
 
