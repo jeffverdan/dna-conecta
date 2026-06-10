@@ -362,7 +362,7 @@ body {
         li {
             padding: 13px 18px;
             border-bottom: 1px solid $neutral200;
-            font-family: font-primary;
+            font-family: $font-primary, $font-secondary, sans-serif;
             font-size: 14px;
             font-style: normal;
             font-weight: 700;
