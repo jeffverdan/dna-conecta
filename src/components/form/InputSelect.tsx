@@ -29,7 +29,6 @@ const InputSelect = forwardRef<HTMLInputElement, MySelectProps>(
         const { label, success, required, fieldError, options, value, subHeader, onBlurFunction, divClass, placeholder, ...rest } = data;
         const [isFocused, setIsFocused] = useState(false);
         const [isValue, setIsValue] = useState(!!value);
-        const [list, setList] = useState<{ value: number | string, name: string }[]>([]);
 
         useEffect(() => {
             setIsValue(!!value);
@@ -39,7 +38,7 @@ const InputSelect = forwardRef<HTMLInputElement, MySelectProps>(
             const firstOption = options?.[0];
             if(!!firstOption && !!firstOption.value) {
                 options.unshift({ value: 0, name: placeholder || `Selecione o ${label.toLowerCase().replace("*", "")}` })
-                setList(options)
+                // setList(options)
             }
         }, [options])
 
@@ -55,7 +54,7 @@ const InputSelect = forwardRef<HTMLInputElement, MySelectProps>(
                 setIsValue(false);
             }
             if(onBlurFunction) onBlurFunction(e)
-        };        
+        };
 
         return (
             <div className={"inputContainer select " +
@@ -100,7 +99,7 @@ const InputSelect = forwardRef<HTMLInputElement, MySelectProps>(
                     onFocus={handleInputFocus}
                     onBlur={handleInputBlur}
                 >
-                    {list?.map((value) => (
+                    {options?.map((value) => (
                         <MenuItem key={value.value} value={value.value} disabled={value.value === 0 || !value.value} className={value.value === 0 || !value.value ? 'placeholder' : ''}>                            
                             {value.name}
                         </MenuItem>

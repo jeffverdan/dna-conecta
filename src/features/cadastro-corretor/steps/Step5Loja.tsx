@@ -9,6 +9,7 @@ import InputSelect from "@/components/form/InputSelect";
 import { lojasDNA } from "../utils/constants";
 import logoConecta from "@/images/logoConecta.svg";
 import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 
 
 type FormData = z.infer<typeof indicacaoSchema>;
@@ -17,6 +18,7 @@ export function Step5Loja() {
   const patchData = useCadastroStore((s) => s.patchData);
   const setStep = useCadastroStore((s) => s.setStep);
   const data = useCadastroStore((s) => s.data);
+  const [options, setOptions] = useState(lojasDNA)
 
   const {
     register,
@@ -29,7 +31,10 @@ export function Step5Loja() {
     defaultValues: data as FormData
   });
 
-  console.log("Watch: ", watch());
+  useEffect(() => {
+    setOptions(lojasDNA);
+  }, []);
+  console.log("Options: ", options)
 
   const onSubmit = (v: FormData) => {
     patchData({ ...v });
@@ -82,7 +87,7 @@ export function Step5Loja() {
               placeholder="Selecione a loja"
               value={watch("lojaId")}
               {...register("lojaId")}
-              options={lojasDNA}
+              options={options}
               fieldError={errors.lojaId}
             />
 

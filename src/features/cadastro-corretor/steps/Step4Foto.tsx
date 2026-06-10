@@ -9,6 +9,7 @@ import { HiDocumentDuplicate } from "react-icons/hi";
 import FileUploadButton from "@/components/form/FileUploadButton";
 import FileUploadOrPhoto from "@/components/form/FileUploadOrPhoto";
 import { patchDocumentCNH, patchDocumentResidencia, patchDocumentDiploma, patchDocumentFoto, getDataDocuments } from "../store/useDocumentsStore";
+import { toast } from "sonner";
 
 type FormData = z.infer<typeof docsSchema>;
 
@@ -26,10 +27,7 @@ export function Step4Foto() {
     mode: "onChange",
     defaultValues: {...data, ...getDataDocuments()} as FormData
   });
-
-  console.log("DataDocs: ", getDataDocuments());
-  console.log("watch: ", watch());
-
+  
   const upload: React.ChangeEventHandler<HTMLInputElement> = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -62,12 +60,11 @@ export function Step4Foto() {
   };
 
   const onSubmit = (v: FormData) => {
-    // patchData({ ...v });
-    console.log("Submit Data: ", v);
     patchDocumentCNH({ base64: v.doc_rg_cnh_name, name: v.doc_rg_cnh_name });
     patchDocumentResidencia({ base64: v.doc_residencia_name, name: v.doc_residencia_name });
     patchDocumentDiploma({ base64: v.doc_diploma_name, name: v.doc_diploma_name });
     patchDocumentFoto({ base64: v.fotoBase64, name: v.fotoName });
+    toast.success("Documentos salvo");
     setStep(5);
   };
 

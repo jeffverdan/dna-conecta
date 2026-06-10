@@ -10,6 +10,7 @@ import InputRadioGroup from "@/components/form/RadioGroup";
 import { useEffect, useState } from "react";
 import { fetchBanks } from "@/services/banks";
 import AutoCompleteVirtualize, { ValueAutocompleteType } from "@/components/form/AutoCompleteVirtualization";
+import { toast } from "sonner";
 
 const detect = (v: string | undefined) =>
   !v ? undefined :
@@ -74,6 +75,7 @@ export function Step3Pix() {
 
   const onSubmit = (v: FormData) => {
     patchData({ ...v, pixTipo: detect(v.pix) });
+    toast.success("Dados bancários salvo");
     setStep(4);
   };
 
