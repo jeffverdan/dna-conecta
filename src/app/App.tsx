@@ -2,7 +2,9 @@
 import { AppRouter } from "@/routes/AppRouter";
 
 export function App() {
-  return <AppProviders><AppRouter /></AppProviders>;
+  return <AppProviders>
+    <AppRouter />
+  </AppProviders>;
 }
 
 
